@@ -59,26 +59,26 @@ where
 #[cfg(test)]
 fn get_example_tree_items() -> Vec<TreeItem<'static, &'static str>> {
     vec![
-        TreeItem::new_leaf("a", "Alfa"),
+        TreeItem::new_leaf("a", "Alfa", None),
         TreeItem::new(
             "b",
             "Bravo",
             vec![
-                TreeItem::new_leaf("c", "Charlie"),
+                TreeItem::new_leaf("c", "Charlie", None),
                 TreeItem::new(
                     "d",
                     "Delta",
                     vec![
-                        TreeItem::new_leaf("e", "Echo"),
-                        TreeItem::new_leaf("f", "Foxtrot"),
+                        TreeItem::new_leaf("e", "Echo", None),
+                        TreeItem::new_leaf("f", "Foxtrot", None),
                     ],
                 )
                 .expect("all item identifiers are unique"),
-                TreeItem::new_leaf("g", "Golf"),
+                TreeItem::new_leaf("g", "Golf", None),
             ],
         )
         .expect("all item identifiers are unique"),
-        TreeItem::new_leaf("h", "Hotel"),
+        TreeItem::new_leaf("h", "Hotel", None),
     ]
 }
 
