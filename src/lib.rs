@@ -1,19 +1,20 @@
-use std::collections::HashSet;
+use colored::Colorize;
 use ratatui::buffer::Buffer;
 use ratatui::layout::{Corner, Rect};
 use ratatui::style::Style;
 use ratatui::text::{Span, Text};
 use ratatui::widgets::{Block, StatefulWidget, Widget};
+use std::collections::HashSet;
 use unicode_width::UnicodeWidthStr;
 
 mod data;
 mod flatten;
 mod identifier;
 
+pub use crate::data::Data;
 use crate::flatten::flatten;
 pub use crate::flatten::Flattened;
 pub use crate::identifier::get_without_leaf as get_identifier_without_leaf;
-pub use crate::data::Data;
 
 #[derive(Debug, Default, Clone)]
 pub struct TreeState<Identifier> {
@@ -218,7 +219,7 @@ where
         let mut buf: Text = text.into();
 
         if let Some(d) = data {
-            let span = Span::raw(format!("{}{}", ": ", d.0));
+            let span = Span::raw(format!("{}{}", ": ".green(), d.0.purple()));
             buf.lines[0].spans.push(span);
         }
         Self {
